@@ -7,7 +7,7 @@ public class Test03 {
 		Scanner sc = new Scanner(System.in);
 		String yourInput = "";
 		int inputData = 0;
-		int resFactNum = 0;
+		long resFactNum = 0;
 		
 		System.out.print("Nhập số nguyên dương cần tìm giai thừa : ");
 		yourInput = sc.nextLine();
@@ -21,8 +21,8 @@ public class Test03 {
 		System.out.println("\n=========Finished System=========");
 		sc.close();
 	}
-	private static int factCalcFun(int factNum) {
-		int resFactNum = 1;
+	private static long factCalcFun(int factNum) {
+		long resFactNum = 1;
 		for( int count = factNum; count > 0; count-- ) {
 			resFactNum *= count;
 		}
