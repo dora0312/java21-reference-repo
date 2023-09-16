@@ -1,4 +1,4 @@
-package shopping;
+package bean;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;

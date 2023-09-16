@@ -1,4 +1,4 @@
-package shopping;
+package bean;
 
 public class Item {
 	private String id;
