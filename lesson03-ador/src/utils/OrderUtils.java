@@ -1,7 +1,11 @@
-package shopping;
+package utils;
 
 import java.time.LocalDate;
 import java.time.Month;
+
+import bean.Item;
+import bean.ItemDetailt;
+import bean.Order;
 
 /**
  * Utility of Order class
