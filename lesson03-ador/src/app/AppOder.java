@@ -6,7 +6,7 @@ import bean.Customer;
 import bean.Item;
 import bean.ItemDetailt;
 import bean.Order;
-import utils.OrderUtils;
+import utils.Utils;
 
 public class AppOder {
 	public static void main(String[] args) {
@@ -34,9 +34,9 @@ public class AppOder {
 							new ItemDetailt(i4, 1),
 						}, LocalDateTime.of(2021, 5, 8, 9, 28, 32));
 
-		OrderUtils.export(order1);
-		OrderUtils.export(order2);
-		OrderUtils.export(order3);
+		Utils.export(order1);
+		Utils.export(order2);
+		Utils.export(order3);
 		
 	}
 }

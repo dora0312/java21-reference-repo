@@ -12,9 +12,9 @@ import bean.Order;
  * Normally: Utility is place where contains utility methods
  * No care created class's object
  */
-public class OrderUtils {
+public class Utils {
 	
-	private OrderUtils() {
+	private Utils() {
 	}
 	
 	public static void export(Order order) {
