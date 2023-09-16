@@ -3,6 +3,8 @@ package utils;
 import java.time.LocalDate;
 import java.time.Month;
 
+import bean.Car;
+import bean.HumanInfo;
 import bean.Item;
 import bean.ItemDetailt;
 import bean.Order;
@@ -42,5 +44,46 @@ public class Utils {
 		}
 		System.out.println("\nTổng hóa đơn: " + totolOfMoney);
 		//return totolOfMoney;
+	}
+	public static void printHumanInfo(HumanInfo[] humanInfo) {
+		double totolTax = 0;
+		
+		
+		System.out.println("Tên chủ xe         Loại xe       Dung tích       Trị giá       Số lượng       Thuế phải nộp");
+		System.out.println("=======================================================================================================");
+		
+		for(HumanInfo info: humanInfo) {
+			Car[] cars = info.getCar();
+			boolean checkQty = true;
+			for(Car car: cars) {
+				if(car == null) {
+					break;
+				}
+				if( checkQty ) {
+					System.out.print(info.getHuman().getName());
+				} else {
+					System.out.print("            ");
+				}
+				System.out.print("       " + car.getCarName());
+				System.out.print("           " + car.getCapcity());
+				System.out.print("           " + car.getPrice());
+				System.out.print("            " + car.getQuantity());
+				int capcity = car.getCapcity();
+				double price = car.getPrice() * car.getQuantity();
+				if( capcity <= 100 ) {
+					totolTax += price * 0.1;
+				} else if( capcity <= 200 ) {
+					totolTax += price * 0.3;
+				} else {
+					totolTax += price * 0.5;
+				}
+				System.out.println("                  " + totolTax);
+				checkQty = false;
+			}
+		}
+		
+		
+		
+		
 	}
 }
