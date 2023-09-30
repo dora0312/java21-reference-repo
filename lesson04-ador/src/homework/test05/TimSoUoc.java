@@ -9,7 +9,7 @@ public class TimSoUoc {
 		Scanner sc = new Scanner(System.in);
 		int index;
 		do {
-			System.out.print("Input number of array: ");
+			System.out.print("Input number size of array: ");
 			index = Integer.parseInt(sc.nextLine());
 		}while(index < 3 || index > 20);
 		sc.close();

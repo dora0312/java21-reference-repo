@@ -17,11 +17,11 @@ public class CompanyApp {
 		Personal staff6 = new Staff("Nguyễn Văn D", "06.03.1996", chgBD(1.3), (Management)m1);
 		
 		Personal[] allMember = {direc, m1, m2, staff1, staff2, staff3, staff4, staff5, staff6};
-		System.out.println("======================All Company's Member==============================");
+		System.out.println("======================All Company's Member Info==============================");
 		printAllMember(allMember);
-		System.out.println("======================Managerment Filter==============================");
+		System.out.println("======================Filter By Managerment==============================");
 		printStaffByMgn(allMember);
-		System.out.println("======================Member Of Salary==============================");
+		System.out.println("======================All Member Of Salary==============================");
 		printSalaryOfMembers(allMember);
 
 	}
