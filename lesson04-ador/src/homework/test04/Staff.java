@@ -11,7 +11,7 @@ public class Staff extends Personal {
 	}
 	
 	public Staff(String emplName, String emplBrithday, BigDecimal heSoLuong, Management quanLy) {
-		super("Nhân Viên", emplName, emplBrithday, heSoLuong, BigDecimal.ZERO);
+		super("Staff", emplName, emplBrithday, heSoLuong, BigDecimal.ZERO);
 		this.unitName = quanLy.getUnitName();
 		this.quanLy = quanLy;
 	}

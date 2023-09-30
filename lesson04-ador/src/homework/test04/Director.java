@@ -9,7 +9,7 @@ public class Director extends Personal {
 	}
 	
 	public Director(String emplName, String emplBrithday, BigDecimal heSoLuong, BigDecimal heSoChucVu) {
-		super("Giám đốc", emplName, emplBrithday, heSoLuong, heSoChucVu);
+		super("Director", emplName, emplBrithday, heSoLuong, heSoChucVu);
 	}
 
 	@Override

@@ -11,7 +11,7 @@ public class Management extends Personal {
 	
 	public Management(String emplName, String emplBrithday, BigDecimal heSoLuong, BigDecimal heSoChucVu,
 			String unitName) {
-		super("Quản lý", emplName, emplBrithday, heSoLuong, heSoChucVu);
+		super("Management", emplName, emplBrithday, heSoLuong, heSoChucVu);
 		this.unitName = unitName;
 	}
 
