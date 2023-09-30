@@ -29,9 +29,7 @@ public class Management extends Personal {
 	}
 
 	@Override
-	public BigDecimal getSalary() {
-		BigDecimal salary;
-		salary = (super.getHeSoLuong().add(super.getHeSoChucVu())).multiply(BigDecimal.valueOf(2200000));
-		return salary;
+	public BigDecimal getSalary(BigDecimal salary) {
+		return (super.getHeSoLuong().add(super.getHeSoChucVu())).multiply(salary);
 	}
 }

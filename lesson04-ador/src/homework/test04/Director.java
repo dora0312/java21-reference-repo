@@ -13,10 +13,8 @@ public class Director extends Personal {
 	}
 
 	@Override
-	public BigDecimal getSalary() {
-		BigDecimal salary;
-		salary = (super.getHeSoLuong().add(super.getHeSoChucVu())).multiply(BigDecimal.valueOf(300000));
-		return salary;
+	public BigDecimal getSalary(BigDecimal salary) {
+		return (super.getHeSoLuong().add(super.getHeSoChucVu())).multiply(salary);
 	}
 
 }
