@@ -1,19 +1,18 @@
-package homeowrk.test04;
+package homework.test04;
 
 import java.math.BigDecimal;
 
-public class Employee {
+public abstract class Personal implements Statistics {
 	private String chucVu;
 	private String emplName;
 	private String emplBrithday;
 	private BigDecimal heSoLuong;
 	private BigDecimal heSoChucVu;
 	
-	public Employee() {
-		// TODO Auto-generated constructor stub
+	public Personal() {
 	}
 
-	public Employee(String chucVu, String emplName, String emplBrithday, BigDecimal heSoLuong, BigDecimal heSoChucVu) {
+	public Personal(String chucVu, String emplName, String emplBrithday, BigDecimal heSoLuong, BigDecimal heSoChucVu) {
 		this.chucVu = chucVu;
 		this.emplName = emplName;
 		this.emplBrithday = emplBrithday;
@@ -52,7 +51,7 @@ public class Employee {
 	public void setHeSoLuong(BigDecimal heSoLuong) {
 		this.heSoLuong = heSoLuong;
 	}
-	
+
 	public BigDecimal getHeSoChucVu() {
 		return heSoChucVu;
 	}
@@ -63,7 +62,9 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [chucVu=" + chucVu + ", emplName=" + emplName + ", emplBrithday=" + emplBrithday
-				+ ", heSoLuong=" + heSoLuong + "]";
+		return "Personal [chucVu=" + chucVu + ", emplName=" + emplName + ", emplBrithday=" + emplBrithday
+				+ ", heSoLuong=" + heSoLuong + ", heSoChucVu=" + heSoChucVu + "]";
 	}
+	
+	
 }
