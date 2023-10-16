@@ -1,0 +1,17 @@
+num < 10
+ một, hai, ba, ... chín
+num < 20
+ mười + một, hai, ba, ...chín
+num < 100
+ hai, ba, bốn...chín + mười
+num < 110
+ một trăm lẻ + một, hai, ba, .... chín
+num < 120
+ một trăm mười + một, hai, ba,... chín
+num > 120
+ hai, ba, bốn, ...chín + trăm + hai, ba, bốn, ...chín +  mốt, hai, ba, bốn, ...chín
+ 
+đơn vị: "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"
+chục :  "mốt", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"
+
+trăm:  "trăm lẻ", "trăm"
