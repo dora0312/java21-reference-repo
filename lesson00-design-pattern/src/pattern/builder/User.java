@@ -73,8 +73,8 @@ public class User {
 				+ email + ", address=" + address + "]";
 	}
 	
-	public static void builder() {
-		new Builder();
+	public static Builder builder() {
+		return new Builder();
 	}
 	
 	// Nested Class

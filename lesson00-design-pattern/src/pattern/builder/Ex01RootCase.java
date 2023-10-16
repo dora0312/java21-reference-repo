@@ -1,5 +1,7 @@
 package pattern.builder;
 
+import java.math.BigDecimal;
+
 public class Ex01RootCase {
 	public static void main(String[] args) {
 		/*
@@ -25,8 +27,37 @@ public class Ex01RootCase {
 		 			--> Vì constructor luôn trùng tên với class
 		 				Ví dụ: cần constructor 1 tham số a1, a2 và cần constructor a5, a6
 		 				--> nếu như a1, trung KDL với a5
-		 				
+		 	+ Cách thực thi:
+		 	  Thay vì dùng setter --> 1 lần gọi hàm set giá trị xong trả về void, lấy đối tượng đó gọi lại --> code dài
+		 	  Dùng builder style --> 1 lần gọi hàm set giá trị xong trả về chính đối tượng hiện tại --> tiếp tục đi gọi các hàm khác.
+		 	  			ví dụ:
+		 	  					LocalDateTime.now()  // LocalDateTime
+									.withHour(15)    // LocalDateTime
+									.withMinute(20)  // LocalDateTime
+									.withSecond(30); // LocalDateTime
+		 	  			
 		 (builder pattern --> google search)
 		 */
+		
+		User user1 = User.builder()   // Builder(H1)
+				.withId(15)           // Builder
+				.withFirstName("Teo") // Builder
+				.withLastName("Le")   // Builder
+				.build();
+		
+		User user2 = User.builder()      // Builder(H2)
+				.withId(18)                // Builder
+				.withEmail("na@gmail.com") // Builder
+				.build();
+		
+		User user3 = User.builder()      // Builder(H2)
+				.withId(22)                // Builder
+				.withAddress("sw")         // Builder
+				.withEmail("na@gmail.com") // Builder
+				.build();
+		
+		System.out.println("user1 --> " + user1);
+		System.out.println("user2 --> " + user2);
+		System.out.println("user3 --> " + user3);
 	}
 }
