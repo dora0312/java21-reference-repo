@@ -1,5 +1,6 @@
 package pattern.builder;
-
+// Owner class
+// Class --> Immutable class không thể set/del data
 public class User {
 	private Integer id;
 	private String firstName;

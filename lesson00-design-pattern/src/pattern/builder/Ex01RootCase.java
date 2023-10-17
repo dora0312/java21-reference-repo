@@ -43,7 +43,7 @@ public class Ex01RootCase {
 				.withId(15)           // Builder
 				.withFirstName("Teo") // Builder
 				.withLastName("Le")   // Builder
-				.build();
+				.build();			  // User
 		
 		User user2 = User.builder()      // Builder(H2)
 				.withId(18)                // Builder
@@ -59,5 +59,23 @@ public class Ex01RootCase {
 		System.out.println("user1 --> " + user1);
 		System.out.println("user2 --> " + user2);
 		System.out.println("user3 --> " + user3);
+		
+		BigDecimal a = new BigDecimal(12)
+						.add(db(22))
+						.add(db(35));
+		System.out.println("a --> " + a);
+		
+		User2 uA = new User2()
+				.withId(15)
+				.withAddress("Da Nang");
+		User2 uB = User2.of()
+				.withId(16)
+				.withAddress("Kon Tum");
+		System.out.println("uA : " + uA);
+		System.out.println("uB : " + uB);
+	
+	}
+	private static BigDecimal db(double doubleValue) {
+		return BigDecimal.valueOf(doubleValue);
 	}
 }
