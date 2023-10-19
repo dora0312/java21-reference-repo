@@ -28,6 +28,7 @@ public class VerifyPassPrograming {
 				System.out.print("Please input your password again: ");
 			}
 		}while(true);
+		ip.close();
 		System.out.println("=====Finished=====");
 	}
 	private static void verifyPassLen(String yourPass) throws VerifyException {

@@ -23,6 +23,7 @@ public class ReadNumber {
 			}
 			
 		} while(true);
+		System.out.println("===========Finshed===========");
 		ip.close();
 	}
 	
