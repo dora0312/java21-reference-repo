@@ -1,57 +1,79 @@
 package test04;
 
+import java.util.Scanner;
+
 public class ReadNumber {
-	private static final String[] hangDonVi = {"không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"};
-	private static final String[] hangChuc = {"", "mốt", "hai", "ba", "bốn", "lăm", "sáu", "bảy", "tám", "chín"};
-	private static final String[] hangChuc2 = {"", "một", "hai", "ba", "bốn", "lăm", "sáu", "bảy", "tám", "chín"};
+	private static String[] readNum = {"không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín", "mười",
+										"mười một", "mười hai", "mười ba", "mười bốn", "mười lăm", "mười sáu",
+										"mười bảy", "mười tám", "mười chín"};
 	public static void main(String[] args) {
-		int numToRead = 2;
-		int [] arr = {1,9,10,11,15,19,20,21,99,100,101,109,110,115,500,550,901,909,999};
-		for (int i = 0; i < arr.length; i++) {
-			String readNum = "";
-			numToRead = arr[i];
-			readNum = readTram(numToRead) + readChuc(numToRead) + readDonVi(numToRead);
-			readNum = readNum.substring(0,1).toUpperCase() + readNum.substring(1);
-			System.out.println("Số " + arr[i] + " đọc là : " + readNum);
-		}
-		
+		Scanner ip  = new Scanner(System.in);
+		int number = 0;
+		do {
+			System.out.print("Nhập số nguyên cần đọc: ");
+			String str = ip.nextLine();
+			try {
+				number = checkSizeOfNumber(str);
+				String readToWord = readNumber(number);
+				readToWord = readToWord.substring(0,1).toUpperCase() + readToWord.substring(1);
+				System.out.println("Số " + number + " đọc là: " + readToWord);
+				break;
+			} catch (VerifyNumException e) {
+				System.out.println(e.getMessage());
+			}
+			
+		} while(true);
+		ip.close();
 	}
 	
-	private static String readTram(int num) {
-		String read = "";
-		if ( num >= 100 ) {
-			read = hangDonVi[num/100] + " trăm ";
-			if (1 <= num%100 && num %100 <= 9) {
-				read += "lẻ ";
-			}
-		}
-		return read;
-	}
-	private static String readChuc(int num) {
-		String read = "";
-		int tempNum = num % 100;
+	private static int checkSizeOfNumber(String num) throws VerifyNumException {
 		
-		if (tempNum >= 10) {
-			num = num / 10;
-			if(tempNum >= 20) {
-				read = hangDonVi[num % 10] + " mươi ";
-			} else if ( tempNum >= 10) {
-				read = "mười ";
+		int input = 0;
+		try {
+			input = Integer.parseInt(num);
+			if(input > 999 || input < -999) {
+				throw new VerifyNumException("Xin vui lòng nhập tối đa 3 số nguyên dương !!!");
 			}
+			return input;
+		} catch (ArithmeticException | NumberFormatException e) {
+			throw new VerifyNumException("Xin vui lòng nhập SỐ NGUYÊN DƯƠNG !!!");
 		}
-		return read;
 	}
 	
-	private static String readDonVi(int num) {
-		String read = "";
-		int tempNum = num % 100;
-		if (tempNum >= 20) {
-			read = hangChuc[num % 10];
-		} else if( tempNum > 10) {
-			read = hangChuc2[num % 10];
-		} else if( 1 <= tempNum && tempNum <= 9) {
-			read = hangDonVi[num % 10];
+	
+	private static String readNumber(int num) {
+		String toRead = "";
+		if(num < 0) {
+			toRead += "âm ";
+			num = Math.abs(num);
 		}
-		return read;
+		int numcheck = num / 100;
+		if(numcheck > 0) {
+			toRead += readNum[numcheck] + " trăm ";
+		}
+		numcheck = num / 10;
+		if (numcheck >= 2) {
+			int checkLe = num % 100;
+			if(checkLe == 0) {
+				// not thing
+			} else if (checkLe < 10) {
+				toRead += "lẻ ";
+			} else if (checkLe >= 20) {
+				toRead += readNum[numcheck % 10] + " mươi ";
+			}
+		}
+		numcheck = num % 100;
+		if (numcheck >= 20 ) {
+			if (numcheck % 10 != 0) {
+				toRead += readNum[numcheck % 10];
+			}
+		} else if (numcheck > 0) {
+			toRead += readNum[numcheck];
+		}
+		if ( num == 0 ) {
+			toRead = readNum[num];
+		}
+		return toRead;
 	}
+	
 }
