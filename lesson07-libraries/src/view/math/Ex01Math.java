@@ -1,5 +1,5 @@
 package view.math;
-import static untils.NumberUtils.*;
+import static utils.NumberUtils.*;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
