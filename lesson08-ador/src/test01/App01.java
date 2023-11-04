@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class App01 {
 	private static final String VIETNAMESE_DIACRITIC_CHARACTERS = "ẮẰẲẴẶĂẤẦẨẪẬÂÁÀÃẢẠĐẾỀỂỄỆÊÉÈẺẼẸÍÌỈĨỊỐỒỔỖỘÔỚỜỞỠỢƠÓÒÕỎỌỨỪỬỮỰƯÚÙỦŨỤÝỲỶỸỴ";
 	public static void main(String[] args) {
-		//String yourString = inputYourSring();
-		String yourString = "anh yêu em ";
+		String yourString = inputYourSring();
+//		String yourString = "anh yêu em ";
 		yourString = yourString.strip();
 		System.out.println("**************** Các ký tự trên dòng ****************");
 		for (int i = 0; i < yourString.length(); i++) {
@@ -38,27 +38,37 @@ public class App01 {
 	private static String inputYourSring() {
 		Scanner ip = new Scanner(System.in);
 		String yourString = "";
+		System.out.println("*** Nhập chuỗi tiếng việt có chứa dấu và khoảng trống ***");
+		System.out.print("Mời nhập chuỗi: ");
 		do {
-			System.out.print("Nhập chuỗi tiếng việt có chứa dấu và khoảng trống: ");
 			yourString = ip.nextLine();
-			if (isValid(yourString)) {
+			try {
+				isValid(yourString);
 				break;
+			} catch (TestValidException e) {
+				System.out.println(e.getMessage());
+				System.out.print("\nMời nhập lại chuỗi: ");
 			}
-			else System.out.println("!!! Hãy nhập chuỗi tiếng việt có chứa DẤU và KHOẢNG TRỐNG !!!");
+			
+			
 		} while (true);
 		
 		ip.close();
 		return yourString;
 	}
 	
-	private static boolean isValid(String yourStr) {
+	private static void isValid(String yourStr) throws TestValidException {
+		boolean status = false;
 		for(char c:VIETNAMESE_DIACRITIC_CHARACTERS.toCharArray()) {
 			if(yourStr.contains(Character.toUpperCase(c)+"") || yourStr.contains(Character.toLowerCase(c)+"")) {
-				if( yourStr.contains(" ")) {
-					return true;
-				}
+				status = true;
 			}
 		}
-		return false;
+		if(!status) {
+			throw new TestValidException("!!! Hãy nhập chuỗi tiếng việt có DẤU !!!");
+		}
+		if(!yourStr.contains(" ")) {
+			throw new TestValidException("!!! Hãy nhập chuỗi có ít nhất 1 KHOẢNG TRỐNG !!!");
+		}
 	}
 }
