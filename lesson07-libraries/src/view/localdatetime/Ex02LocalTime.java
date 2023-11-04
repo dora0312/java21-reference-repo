@@ -17,7 +17,7 @@ public class Ex02LocalTime {
 		
 		System.out.println("duration: " + duration);
 		System.out.println("Hour: " + duration.toHours());
-		// System.out.println("Hour: " + duration.toHoursPart());
+		///System.out.println("Days: " + duration.toDays());
 		System.out.println("Minutes: " + duration.toMinutesPart());
 		System.out.println("Seconds: " + duration.toSecondsPart());
 		System.out.println("Hour: " + duration.toMillis());

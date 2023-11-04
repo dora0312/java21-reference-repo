@@ -7,14 +7,14 @@ import java.util.Locale;
 public class Ex02GetDateTimeInfo {
 	public static void main(String[] args) {
 		// Lấy thông tin thời gian hiện tại với [timezone]
-		// Locale.setDefault(new Locale("vi", "VN"));
-		
-		Calendar c = Calendar.getInstance();
-		c.set(Calendar.MONTH, 2);
-		c.set(Calendar.DAY_OF_MONTH, 21);
+
+		Calendar c = Calendar.getInstance(new Locale("vi", "VN"));
+		c.set(Calendar.YEAR, 2023);
+		c.set(Calendar.MONTH, 10);
+		c.set(Calendar.DAY_OF_MONTH, 29);
 		// + 1. Ngày, Tháng, Năm
 		String date = c.get(Calendar.DAY_OF_MONTH) + "/"
-					+ c.get(Calendar.MONTH) + 1 + "/"
+					+ c.get(Calendar.MONTH) + "/"
 					+ c.get(Calendar.YEAR);
 		System.out.println("1.Ngày tháng năm: " + date);
 		

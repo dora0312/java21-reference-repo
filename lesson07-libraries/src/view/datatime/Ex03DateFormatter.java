@@ -11,7 +11,7 @@ public class Ex03DateFormatter {
 		// Java7: DateFormat(cha), SimpleDateFormat(con)
 		// #format(java.util.Date)
 		// "dd/MM/yyyy: trong SimpleDayFormat
-		Locale.setDefault(new Locale("en","US"));
+		Locale.setDefault(new Locale("ja","JP"));
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss EEEE a");
 		Date date = new Date();
 		System.out.println("date: " + df.format(date));
