@@ -1,4 +1,4 @@
-package java8.homework.test04;
+package java7.homework.test04;
 
 import static utils.DateUtils.isSameDate;
 
