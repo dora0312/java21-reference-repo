@@ -1,11 +1,17 @@
-package java8.test01;
+package java8.homework.test01;
 
 import static utils.DateUtils.*;
 
+import java.time.Duration;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
+import java.util.TimeZone;
 
 public class UltimateRelationship {
 	public static void main(String[] args) {
@@ -83,43 +89,39 @@ public class UltimateRelationship {
 		return checkState;
 	}
 	private static void relationshipTime(Calendar startTime, Calendar endTime) {
-
+		ZoneId zoneId = TimeZone.getDefault().toZoneId();
 		
-		Date startDate = startTime.getTime();
-		Date endDate = endTime.getTime();
+		Instant sInstant = startTime.toInstant();
+		Instant eInstant = endTime.toInstant();
 		
-		long sTime = startDate.getTime();
-		long eTime = endDate.getTime();
-		long duration = eTime - sTime;
+		LocalDateTime sLocalDateTime = LocalDateTime.ofInstant(sInstant, zoneId);
+		LocalDateTime eLocalDateTime = LocalDateTime.ofInstant(eInstant, zoneId);
 		
-		// get years
-		long days = TimeUnit.MILLISECONDS.toDays(duration); 
-		int years = (int)days/365;
-
-		Calendar diffCal = Calendar.getInstance();
-		diffCal.setTimeInMillis(duration);
-		int months = ((diffCal.get(Calendar.YEAR) - 1970) * 12) + diffCal.get(Calendar.MONTH);
-		// get months
-		months = months % 12;
-		// get days
-		int tdays   = diffCal.get(Calendar.DAY_OF_MONTH) - 1;
+		if (sLocalDateTime.isAfter(eLocalDateTime)) {
+			System.out.println("\n!!!Thời gian bắt đầu hẹ hò và kết thúc không hợp lệ !!!");
+			return;
+		}
+		LocalDate sdate = sLocalDateTime.toLocalDate();
+		LocalTime stime = sLocalDateTime.toLocalTime();
 		
-		duration = duration - TimeUnit.DAYS.toMillis(days);
-		long hours = TimeUnit.MILLISECONDS.toHours(duration);
+		LocalDate edate = eLocalDateTime.toLocalDate();
+		LocalTime etime = eLocalDateTime.toLocalTime();
 		
-		duration = duration - TimeUnit.HOURS.toMillis(hours);
-		long minutes = TimeUnit.MILLISECONDS.toMinutes(duration);
-		
-		duration = duration - TimeUnit.MINUTES.toMillis(minutes);
-		long seconds = TimeUnit.MILLISECONDS.toSeconds(duration);
+		Period period = Period.between(sdate, edate);
+		Duration duration = Duration.between(stime, etime);
+		if (duration.isNegative()) {
+			duration = duration.plusDays(1);
+			period = period.minusDays(1);
+		}
 		
 		System.out.println("\n===========Dưới này là tổng thời gian hẹn hò của bạn=================");
-		System.out.println("             "	+ optional(years, "năm")
-								+ optional(months, "tháng")
-								+ optional(tdays, "ngày")
-								+ optional(hours, "tiếng")
-								+ optional(minutes, "phút")
-								+ optional(seconds, "giây"));
+		System.out.println("             "
+				+ optional(period.getYears(), "năm")
+				+ optional(period.getMonths(), "tháng")
+				+ optional(period.getDays(), "ngày")
+				+ optional(duration.toHoursPart(), "giờ")
+				+ optional(duration.toMillisPart(), "phút")
+				+ optional(duration.toSecondsPart(), "giây"));
 		System.out.println("=====================================================================");
 		
 	}

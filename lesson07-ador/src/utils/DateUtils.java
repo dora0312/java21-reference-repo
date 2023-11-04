@@ -3,6 +3,7 @@ package utils;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
@@ -54,11 +55,19 @@ public class DateUtils {
 		}
 		return value + unit +" ";
 	}
+	public static String optional(String unit, long value) {
+		if (value <= 0) {
+			return "";
+		}
+		return unit + " " + value + " ";
+	}
 	public static Calendar inputCalendarTime(Scanner ip) {
 		Calendar setCalendar = Calendar.getInstance();
 		int year = 0;
 		int month = 0;
 		int day = 0;
+		
+		// input year
 		do {
 			try {
 				System.out.print("Nhập năm: ");
@@ -70,6 +79,7 @@ public class DateUtils {
 			}
 		} while(true);
 		
+		// input month
 		do {
 			try {
 				System.out.print("Nhập tháng: ");
@@ -84,6 +94,7 @@ public class DateUtils {
 			}
 		} while(true);
 		
+		// input day and check day of month is valid ?
 		setCalendar.set(Calendar.DAY_OF_MONTH, 1);
 		int maxDayOfMonth = setCalendar.getActualMaximum(Calendar.DATE);
 		do {
@@ -105,6 +116,7 @@ public class DateUtils {
 		
 		return setCalendar;
 	}
+	
 	public static Calendar inputTime(Calendar calendar, Scanner sc) {
 		int hour, minute, second;
 		do {
@@ -152,4 +164,51 @@ public class DateUtils {
 		return calendar;
 	}
 	
+	public static LocalDateTime inputLocalDateTime(Scanner ip) {
+		LocalDateTime localDateTime = null;
+		int year = 0;
+		int month = 0;
+		int day = 0;
+		
+		// input year
+		do {
+			try {
+				System.out.print("Nhập năm: ");
+				year = Integer.parseInt(ip.nextLine());
+				break;
+			} catch (NumberFormatException e) {
+				System.out.println("Vui lòng nhập số nguyên dương năm !!!");
+			}
+		} while(true);
+		
+		// input month
+		do {
+			try {
+				System.out.print("Nhập tháng: ");
+				month = Integer.parseInt(ip.nextLine()) - 1;
+				if (month < Calendar.JANUARY || month > Calendar.DECEMBER) {
+					throw new NumberFormatException();
+				}
+				break;
+			} catch (NumberFormatException e) {
+				System.out.println("Vui lòng nhập số nguyên dương tháng từ 1 đến 12 !!!");
+			}
+		} while(true);
+		
+		LocalDateTime.of(year, month, day, 0, 0);
+		
+		return localDateTime;
+	}
+	public static boolean isSameDate(Calendar date1, Calendar date2) {
+		boolean status = false;
+//		System.out.println("Year: " + date1.get(Calendar.YEAR) + " - " + date2.get(Calendar.YEAR));
+//		System.out.println("Month: " + date1.get(Calendar.MONTH) + " - " + date2.get(Calendar.MONTH));
+//		System.out.println("Day: " + date1.get(Calendar.DAY_OF_MONTH) + " - " + date2.get(Calendar.DAY_OF_MONTH));
+		if (date1.get(Calendar.YEAR) == date2.get(Calendar.YEAR)
+			&& date1.get(Calendar.MONTH) == date2.get(Calendar.MONTH)
+			&& date1.get(Calendar.DAY_OF_MONTH) == date2.get(Calendar.DAY_OF_MONTH)) {
+			return true;
+		}
+		return status;
+	}
 }
