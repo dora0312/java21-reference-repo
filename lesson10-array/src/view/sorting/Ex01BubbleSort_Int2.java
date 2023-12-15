@@ -1,7 +1,7 @@
 package view.sorting;
 import static utils.ArrayUtils.*;
 
-import functional.Compare_Int;
+//import functional.Compare_Int;
 import functional.Compare_Int2;
 public class Ex01BubbleSort_Int2 {
 	public static void main(String[] args) {
@@ -56,25 +56,25 @@ public class Ex01BubbleSort_Int2 {
 	}
 	
 	
-	private static void sortAsc(int[] elements) {
-		// sort ascending | descending
-		for(int row = 0; row < elements.length; row++) {
-			for(int col = 0; col < elements.length - row - 1; col++) {
-				if(elements[col] - elements[col + 1] > 0) {
-					swap(elements, col, col + 1);
-				}
-			}
-		}
-	}
-	private static void sortDes(int[] elements) {
-		// sort ascending | descending
-		for(int row = 0; row < elements.length; row++) {
-			for(int col = 0; col < elements.length - row - 1; col++) {
-				if(elements[col] - elements[col + 1] < 0) {
-					swap(elements, col, col + 1);
-				}
-			}
-		}
-	}
+//	private static void sortAsc(int[] elements) {
+//		// sort ascending | descending
+//		for(int row = 0; row < elements.length; row++) {
+//			for(int col = 0; col < elements.length - row - 1; col++) {
+//				if(elements[col] - elements[col + 1] > 0) {
+//					swap(elements, col, col + 1);
+//				}
+//			}
+//		}
+//	}
+//	private static void sortDes(int[] elements) {
+//		// sort ascending | descending
+//		for(int row = 0; row < elements.length; row++) {
+//			for(int col = 0; col < elements.length - row - 1; col++) {
+//				if(elements[col] - elements[col + 1] < 0) {
+//					swap(elements, col, col + 1);
+//				}
+//			}
+//		}
+//	}
 	
 }

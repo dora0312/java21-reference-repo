@@ -66,13 +66,13 @@ public class Ex02StringBubbleSort_String {
 	}
 	
 	
-	private static void sortAsc(String[] elements) {
-		for(int i = 0; i < elements.length; i++) {
-			for(int j = 0; j < elements.length - i -1; j++) {
-				if(elements[j].compareTo(elements[j + 1]) > 0) {
-					swap(elements, j, j + 1);
-				}
-			}
-		}
-	}
+//	private static void sortAsc(String[] elements) {
+//		for(int i = 0; i < elements.length; i++) {
+//			for(int j = 0; j < elements.length - i -1; j++) {
+//				if(elements[j].compareTo(elements[j + 1]) > 0) {
+//					swap(elements, j, j + 1);
+//				}
+//			}
+//		}
+//	}
 }
